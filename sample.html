@@ -1,25 +1,265 @@
+<!doctype html>
 <html>
-	<head>
-		<title>Module 7: Movie Searcher</title>
-	<link rel="stylesheet" href="style.css">
-	</head>
-	<body background="cinema1.jpg">
-		<center>
-		<div id="main">
-		<span>Movie Searcher App</span>
-		<input type=text id="txtbox" placeholder="Search movies here">
-		<a id = "search-btn" href="#">Search</a>
-		</div>
-		</center>
-		<center>
-		<div id="resultcontainer">
-		</div>
-		</center>
-		<div id="container">
-		</div>
-		
-		<script src="jquery.js"></script>
-		<script src="app.js"></script>
+<head>
+   <title>Module 5: My first web app improvement</title>
+    <link rel=stylesheet href="style.css">
+</head>
+<body>
+	<h1>My Assignments</h1>
+		<div class='main'>
+        	<div id='to-do'>
+        		<center><h3>To-Do List: &nbsp; <span id = "done-count">0</span> / <span id = "task-count">0</span </center></h3>
+        	
+        	    <a id='btn-toggle' href="#">Toggle all tasks to done</a>
+        	    <a id='btn-removeAll' href="#">Remove all done tasks</a>
+			    <br>
+			    <input id='txtbox' type='text'/>
+        		<ul id='todo-list'>
+        		</ul>
+        	</div>
+    	</div>
+    <script>
 
-	</body>
+     	var arrayAllTask = []; 
+        var arrayDone = []; 
+        var arrayTask = []; 
+        var donetaskEl = document.getElementById('done-count');
+        var taskCounterEl = document.getElementById('task-count'); 
+        var txtBoxEl = document.getElementById('txtbox'); 
+        var btnToggleEl = document.getElementById('btn-toggle'); 
+        var btnRemoveAll = document.getElementById('btn-removeAll'); 
+        var todoListEl = document.getElementById('todo-list'); 
+		
+        btnToggleEl.onclick = onClickToggle;
+        btnRemoveAll.onclick = onClickRemoveDone;
+
+		console.log();
+		if (JSON.parse(localStorage.getItem('mo5alltask')) != null) {
+			var storagearrayAllTask = JSON.parse(localStorage.getItem('mo5alltask'));
+			var storagearrayTask = JSON.parse(localStorage.getItem('mo5task'));
+			var storagearrayDone = JSON.parse(localStorage.getItem('mo5done'));
+			
+			for (var i = 0; i < storagearrayAllTask.length; i++) {
+				if (storagearrayAllTask.length == 1) {
+					arrayAllTask.push(storagearrayAllTask[i]);
+				} else {
+					if (storagearrayAllTask[i] == ',') {
+						if (i%2 != 1) {
+							arrayAllTask.push(storagearrayAllTask[i]);
+						}
+					} else {
+						arrayAllTask.push(storagearrayAllTask[i]);
+					}
+				}
+			}
+			
+			for (var i = 0; i < storagearrayTask.length; i++) {
+				if (storagearrayTask.length == 1) {
+					arrayTask.push(storagearrayTask[i]);
+				} else {
+					if (storagearrayTask[i] == ',') {
+						if (i%2 != 1) {
+							arrayTask.push(storagearrayTask[i]);
+						}
+					} else {
+						arrayTask.push(storagearrayTask[i]);
+					}
+				}
+			}
+			
+			for (var i = 0; i < storagearrayDone.length; i++) {
+				if (storagearrayDone.length == 1) {
+					arrayDone.push(storagearrayDone[i]);
+				} else {
+					if (storagearrayDone[i] == ',') {
+						if (i%2 != 1) {
+							arrayDone.push(storagearrayDone[i]);
+						}
+					} else {
+						arrayDone.push(storagearrayDone[i]);
+					}
+				}
+			}
+			
+			
+		
+        function onClickShow() {
+
+            if (txtbox.value == '') {
+                alert('Invalid input: Empty field!');
+            }
+
+            else {
+				var same = false;
+                for (var i = 0; i < arrayAllTask.length; i++) {
+                    if (arrayAllTask[i] == txtBoxEl.value) {
+                        same = true;
+                    }
+                }
+
+                if (same) {
+                    alert('Invalid input: Duplicate tasks!');
+                    txtBoxEl.value="";
+					
+                } else {             
+					var itemEl = document.createElement('li');
+					var listMarkup =
+					'<div class="todo-item">' +
+						'<input class = "cb" type = "checkbox">' +
+						'<span class="name">' + txtBoxEl.value + '</span>' +
+				   '</div>';    
+					itemEl.innerHTML = listMarkup;
+					todoListEl.insertBefore(itemEl, todoListEl.childNodes[0]);
+					
+					arrayAllTask.push(txtBoxEl.value);
+					arrayTask.push(txtBoxEl.value);
+					txtbox.value = '';
+					
+					donetaskEl.innerHTML = arrayDone.length;
+					taskCounterEl.innerHTML = arrayAllTask.length;
+					savetoLocalStorage();
+
+					var cbBtnEl = itemEl.getElementsByClassName('cb')[0];
+					cbBtnEl.onclick = onClickCheckbox;
+                }
+            }
+        }
+
+        
+
+        function onClickToggle(){
+            var chckCntr = 0;
+            for (var i = 0; i < arrayAllTask.length; i++) {
+                var cbEl = document.getElementsByClassName('cb')[i];
+                
+                if (cbEl.checked) {
+                    chckCntr++;
+                };
+            }
+			
+            for (var i = 0; i < arrayAllTask.length; i++) {
+                var cbEl = document.getElementsByClassName('cb')[i];
+            
+                if (chckCntr != arrayAllTask.length) {
+					if (!cbEl.checked) {
+						var cbBtnValueEl = document.getElementsByClassName('name')[0];
+						cbBtnValueEl.className = 'donetaskname';
+						for (var j = 0; j < arrayTask.length; j++){
+							if (cbBtnValueEl.innerText == arrayTask[j]){
+								arrayDone.push(arrayTask[j]);
+								arrayTask.splice(j, 1);
+							}
+						}
+					}
+                    cbEl.checked = true;
+                } else {
+					if (cbEl.checked) {
+						var cbBtnValueEl = document.getElementsByClassName('donetaskname')[0];
+						cbBtnValueEl.className = 'name';
+						for (var j = 0; j < arrayDone.length; j++){
+							if (cbBtnValueEl.innerText == arrayDone[j]){
+								arrayTask.push(arrayDone[j]);
+								arrayDone.splice(j, 1);
+							}
+						}
+					}
+                    cbEl.checked = false;
+                }
+            }
+			
+			donetaskEl.innerHTML = arrayDone.length;
+			savetoLocalStorage();
+        }
+			for (var i = 0; i < arrayAllTask.length; i++){
+				var itemEl = document.createElement('li');
+				var className = 'name';
+				for (var j = 0; j < arrayDone.length; j++) {
+					if (arrayAllTask[i] == arrayDone[j]) {
+						className = 'donetaskname';
+					}
+				}
+				var listMarkup =
+				'<div class="todo-item">' +
+				'<input class = "cb" type = "checkbox">' +
+				'<span class="' + className + '">' + arrayAllTask[i] + '</span>' +
+				'</div>';   
+				itemEl.innerHTML = listMarkup;
+				todoListEl.insertBefore(itemEl, todoListEl.childNodes[0]);
+				
+				var cbBtnEl = itemEl.getElementsByClassName('cb')[0];
+				if (className == 'donetaskname') {
+					cbBtnEl.checked = true;
+				}
+				cbBtnEl.onclick = onClickCheckbox;
+			}
+		}
+		donetaskEl.innerHTML = arrayDone.length;
+		taskCounterEl.innerHTML = arrayAllTask.length;
+		
+        txtBoxEl.onkeydown = function(event){
+            if (event.keyCode == 13) {
+                onClickShow();
+            }
+        }
+        function onClickRemoveDone(){
+			var donelength = arrayDone.length;
+			for(var i = 0; i < donelength; i++) {
+				for (var j = 0; j < arrayAllTask.length; j++) {
+					if (arrayDone[i] == arrayAllTask[j]) {
+						arrayAllTask.splice(j, 1);
+					}
+				}
+			}
+			
+			for(var i = 0; i < donelength; i++) {
+				var liItem = document.getElementsByClassName('donetaskname')[0].parentNode.parentNode;
+				liItem.remove();
+			}
+			
+			
+			for (var i = 0; i < donelength; i++) {
+				arrayDone.splice(0, 1);
+			}
+			
+			donetaskEl.innerHTML = arrayDone.length;
+			taskCounterEl.innerHTML = arrayAllTask.length;
+			savetoLocalStorage();
+        }
+		function onClickCheckbox(){
+            var cbBtnEl = event.target;
+			var liItem = cbBtnEl.parentNode; 
+			var cbBtnValueEl;
+			
+			if (cbBtnEl.checked) {
+				cbBtnValueEl = liItem.getElementsByClassName('name')[0];
+				for (var i = 0; i < arrayTask.length; i++){
+					if (cbBtnValueEl.innerText == arrayTask[i]){
+						arrayDone.push(arrayTask[i]);
+						arrayTask.splice(i, 1);
+					}
+				}
+				cbBtnValueEl.className = 'donetaskname';
+			} else {
+				cbBtnValueEl = liItem.getElementsByClassName('donetaskname')[0];
+				for (var i = 0; i < arrayDone.length; i++){
+					if (cbBtnValueEl.innerText == arrayDone[i]){
+						arrayTask.push(arrayDone[i]);
+						arrayDone.splice(i, 1);
+					}
+				}
+				cbBtnValueEl.className = 'name';
+			}
+			
+			donetaskEl.innerHTML = arrayDone.length;
+			savetoLocalStorage();
+        }
+		
+		function savetoLocalStorage() {
+			localStorage.setItem("mo5alltask", JSON.stringify(arrayAllTask));
+			localStorage.setItem("mo5task", JSON.stringify(arrayTask));
+			localStorage.setItem("mo5done", JSON.stringify(arrayDone));
+		}
+   
+</script>
+</body>
 </html>
