@@ -1,0 +1,96 @@
+body {
+  background-color: #313131;
+}
+
+h1 {
+  text-align: center;
+  font-family: cursive;
+  color: white;
+  width: 480px;
+  margin: auto;
+  margin-bottom: 15px;
+  margin-top: 15px;
+  padding: 10px;
+  border: 3px solid white;
+  border-radius: 15px;
+  background-color: #F01E21;
+}
+
+.main {
+    width: 500px;
+    margin: auto;
+    border: solid white 3px;
+    border-radius: 15px;
+    font-family: century gothic;
+    font-size: 20px;
+    background-color: #7D6CEE;
+    -webkit-flex: 1 6 20%;
+           flex: 1 6 20%;
+   	-webkit-order: 1;
+           order: 1;
+    
+}
+
+#btn-toggle {
+  margin-top: 10px;
+  border: solid 2px black;
+  padding: 5px;
+  margin-left: 10px;
+  text-decoration: none;
+  font-weight: bolder;
+  font-size: 15px;
+  color: maroon;
+  font-family: century gothic;
+}
+
+#btn-removeAll {
+  margin-top: 10px;
+  border: solid 2px black;
+  padding:5px;
+  margin-left: 8px;
+  text-decoration: none;
+  font-weight: bolder;
+  color: maroon;
+  font-size: 15px;
+  font-family: century gothic;
+}
+
+#txtbox {
+  width: 441px;
+  height: 35px;
+  border: 2px solid blue;
+  margin-bottom: 15px;
+  margin-top: 25px;
+  font-family: Century gothic;
+  padding-left: 8px;
+}
+
+
+#todo-list {
+    list-style: none;
+    width: 100%;
+    padding-left: 0;
+
+}
+.todo-item {
+    border: 2px solid black;
+    height: 30px;
+    padding: 5px;
+    margin-top: 8px;
+    margin-left: 24px;
+    margin-right: 24px;
+    background-color: white;
+    font-family: Century Gothic;
+    letter-spacing: 1px;
+    font-size: 14px;
+    text-align: left;
+    padding-left: 6px;
+    padding-top: 10px;
+}
+
+.donetaskname{
+  text-decoration: line-through;
+}
+
+
+

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <title>Module 3: Holy Grail Layout</title>
+    <style>
+
+  body {
+   background: #6D6E6C;
+  }
+
+  #main {
+   min-height: 500px;
+   margin: 0px;
+   padding: 0px;
+   display: -webkit-flex;
+   display:         flex;
+   -webkit-flex-flow: row;
+           flex-flow: row;
+   }
+ 
+  #main > article {
+   font-family: century gothic;
+   letter-spacing: 1px;
+   font-size: 15px; 
+   font-weight: bold;
+   margin: 2px;
+   padding: 10px;
+   padding-left: 15px;
+   border: 4px solid #4E4A4A;
+   border-radius: 13pt;
+   background: #F5EAEA;
+   -webkit-flex: 3 1 70%;
+           flex: 3 1 70%;
+   -webkit-order: 2;
+           order: 2;
+   }
+  
+  #main > nav {
+   font-family: century gothic;
+   font-size: 15px;
+   font-weight: bold;
+   letter-spacing: 1px;
+   text-decoration: none;
+   margin: 2px;
+   padding-left: 15px;
+   padding-top: 10px;
+   border: 3px solid #FFB8B8;
+   border-radius: 5pt;
+   background: #FD3131;
+   -webkit-flex: 1 6 15%;
+           flex: 1 6 15%;
+   -webkit-order: 1;
+           order: 1;
+   }
+  
+  #main > aside {
+   font-family: helvetica;
+   color: white;
+   font-size: 12px;
+   padding-left: 15px;
+   padding-right: 10px;
+   padding-top: 10px;
+   margin: 2px;
+   border: 3px solid #FFB8B8;
+   border-radius: 5pt;
+   background: #5B5EF9;
+   -webkit-flex: 1 6 15%;
+           flex: 1 6 15%;
+   -webkit-order: 3;
+           order: 3;
+   }
+ 
+  header{
+   display: block;
+   color: white;
+   font-family: century gothic;
+   font-size: 45px;
+   font-weight: bold;
+   letter-spacing: 2px;
+   color: #E8F5F4;
+   text-align: center;
+   margin: 3px;
+   padding-top: 15px;
+   min-height: 65px;
+   border: 2px solid white;
+   border-radius: 6pt;
+   background: #2E2E2E;
+   }
+ 
+  footer {
+   display: block;
+   font-family: century gothic;
+   font-size: 12px;
+   color: white;
+   letter-spacing: 1px;
+   margin: 3px;
+   padding: 6px;
+   padding-top: 12px;
+   min-height: 40px;
+   border: 2px solid white;
+   border-radius: 6pt;
+   background: #121212;
+   }
+   #copyright
+   {
+     font-size: 10px;
+     font-family: cursive;
+     color: white; 
+     letter-spacing: 1px;
+   }
+
+   #tbl
+   {
+    font-family: century gothic;
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: black;
+    text-align: center;
+   }
+
+   .tbltd
+   {
+    color: blue;
+    font-weight: bold;
+   }
+
+
+  /* Too narrow to support three columns */
+  @media all and (max-width: 730px) {
+  
+   #main, #page {
+    -webkit-flex-flow: column;
+            flex-flow: column;
+   }
+
+   #main > article, #main > nav, #main > aside {
+    /* Return them to document order */
+    -webkit-order: 0;
+            order: 0;
+   }
+  
+     #main > article
+   {
+    min-height: 472px;
+    max-height: 472px;
+   }
+
+   #main > nav{
+    min-height: 75px;
+    max-height: 75px;
+   }
+
+   #main > aside{
+    min-height: 455px;
+   }
+
+   header {
+    min-height: 65px;
+    max-height: 65px;
+    font-size: 10px;
+    color: white;
+    font-family: century gothic;
+    font-size: 45px;
+    letter-spacing: 2px;
+    font-weight: bold;
+    color: #E8F5F4;
+    text-align: center;
+   }
+
+   footer {
+    min-height: 70px;
+    max-height: 70px;
+    font-size: 10px;
+    font-family: century gothic;
+   }
+
+    #copyright
+   {
+     font-size: 8px;
+     font-family: cursive;
+     color: white; 
+   }
+  }
+ </style>
+  </head>
+  <body>
+ <header>THE SV GEEKS
+ </header>
+ <div id='main'>
+    <article>
+    Favorites
+    <br>
+    <br>
+    <center>
+    <table border="3" id="tbl" width="80%">
+      <tr>
+        <td width="50%">
+        <br> 
+          <h3>Ian M. Lumbang</h3>
+          <table width="100%" align="left">
+            <tr>
+              <td class="tbltd">Movie series :<br><br></td>
+              <td>Harry Potter<br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">TV Program : <br><br></td>
+              <td>Glee <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Music genre : <br><br></td>
+              <td>RnB, Pop, Rock <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Book series : <br><br></td>
+              <td>Lorien Legacies <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Author : <br><br></td>
+              <td>Pitaccus Lore <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Movie actor : <br><br></td>
+              <td>Daniel Radcliffe <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Movie actress : <br><br></td>
+              <td>Emma Watson <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Singer : <br><br><br></td>
+              <td>Olly Murs<br><br><br></td>
+            </tr>
+            <br>
+          </table>
+        </td>
+        <td>
+        <br>
+           <h3>Dyan Angelica F. Mesa</h3>
+          <table width="100%" align="left">
+            <tr>
+              <td class="tbltd">Movie series :<br><br></td>
+              <td>Twilight<br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">TV Program : <br><br></td>
+              <td>Vampire Diaries <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Music genre : <br><br></td>
+              <td>RnB, Ballad, Pop <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Book series : <br><br></td>
+              <td>Twilight <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Author : <br><br></td>
+              <td>Stephenie Meyer <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Movie actor : <br><br></td>
+              <td>Robert Pattinson <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Movie actress : <br><br></td>
+              <td>Kristen Stewart <br><br></td>
+            </tr>
+            <tr>
+              <td class="tbltd">Singer : <br><br><br></td>
+              <td>Adam Levine <br><br><br></td>
+            </tr>
+            <br>
+          </table>
+        </td>
+      </tr>
+    </table>
+    </center>
+    </article>
+    <nav>
+      <table width="100%">
+        <tr>
+          <td><a href="profile.html" style="text-decoration: none">PROFILE</a></td>
+        </tr>
+        <tr>
+          <td><a href="favorites.html" style="text-decoration: none">FAVORITES</a><br></td>
+        </tr>
+        <tr>
+          <td><a href="mottos.html" style="text-decoration: none">MOTTOS</a></td>
+        </tr>
+      </table>
+    </nav>
+    <aside>
+    <center>
+      <br>
+      <br>
+      <br>
+      Ian Lumbang
+      <br>
+      <br>
+      <a href="https://www.facebook.com/IanLumbang" target="blank"><img src="facebook.jpg" height="30px" width="125px"></a>
+      <br>
+      <br>
+      <a href="https://www.twitter.com/ohoh_ian" target="blank"><img src="twitter.jpg" height="30px" width="125px"></a>
+      <br>
+      <br>
+      <a href="http://www.youtube.com/user/akopoito2010" target="blank"><img src="youtube.jpg" height="30px" width="125px"></a>
+      <br>
+      <br>
+      <br>
+      <br>
+      Dyan Mesa
+      <br>
+      <br>
+      <a href="https://www.facebook.com/dyan.angelica.7?ref=ts&fref=ts" target="blank"><img src="facebook.jpg" height="30px" width="125px"></a>
+      <br>
+      <br>
+      <a href="https://twitter.com/kstewfannayd" target="blank"><img src="twitter.jpg" height="30px" width="125px"></a>
+      <br>
+      <br>
+      <a href="http://www.youtube.com/user/akopoito2010" target="blank"><img src="youtube.jpg" height="30px" width="125px"></a>
+    </center>
+    </aside>
+ </div>
+ <footer><center>A third module created by the student of BSCoE V-2
+ <br>Introducing the Responsive Holy Grail Layout which shows how flexbox 
+ <br>provides the ability to dynamically change the layout for different screen resolutions
+ <br>
+  <p id="copyright">Copyright 2013. Polytechnic University of the Philippines</p>
+ </center></footer>
+  </body>
+</html>

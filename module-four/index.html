@@ -1,0 +1,67 @@
+<html>
+<head>
+    <title>Improving my first Web App</title>
+    <link rel=stylesheet href="style.css">
+</head>
+<body>
+	<br>
+	<h1>My Assignments</h1>
+    <div class='main'>
+        <h2>To do lists:</h2>
+        <input id='txtbox' type='text'/>
+        <a id='btn-add' href="#">Add item</a>
+        <ul id='todo-list'>
+        </ul>
+    </div>
+	<div class ='submain'>
+        <h2>Done lists:</h2>
+		<br>
+		<br>
+		<br>
+        <ul id='done-list'>
+        </ul>
+	</div>
+
+    <script>
+        var txtBoxEl = document.getElementById('txtbox');
+        var todoListEl = document.getElementById('todo-list');
+        var doneListEl = document.getElementById('done-list');
+       
+        txtBoxEl.onkeydown = onTyping;
+
+        function onTyping(e) {
+        	if(e.keyCode == 13) {
+
+            	if(document.getElementById('txtbox').value == ""){
+					 alert("Invalid input");
+           		}
+
+           		else {
+           			 var itemEl = document.createElement('li');
+            		 var listMarkup =
+   					 '<div class="todo-item">' +
+       				 '<span class="name">' + txtBoxEl.value + '</span>' +
+        			 '<a class="complete" href="#">Complete</a>' +
+   					 '</div>';
+            		 itemEl.innerHTML = listMarkup;
+            		 var comBtnEl = itemEl.getElementsByClassName('complete')[0];
+            		 comBtnEl.onclick = onClickComplete;
+
+            		 todoListEl.insertBefore(itemEl,todoListEl.firstChild);
+            		 txtBoxEl.value = "";
+            	}
+        	}
+        }
+
+
+
+        function onClickComplete(event) {
+            var comBtnEl = event.target;
+            var liItem = comBtnEl.parentNode;
+            comBtnEl.remove();
+            liItem.remove();
+            doneListEl.appendChild(liItem);
+        }
+    </script>
+</body>
+</html>
