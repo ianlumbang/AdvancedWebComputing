@@ -1,0 +1,62 @@
+.container
+{
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+#txtbox
+{
+	width: 250px;
+	height: 35px;
+	margin-top: 7px;
+	margin-left: 15px;
+	border: solid 2px #EEF2F0;
+	border-radius: 15px;
+	padding-left: 12px;
+}
+#footer
+{
+	background-color: #f1f1f1;
+	padding-top: 15px;
+	font-size: 11px;
+	font-family: century gothic;
+	font-weight: bold;
+	letter-spacing: 1px;
+}
+#list
+{
+	padding-top: 35px;
+}
+#movietitle
+{
+	font-size: 16px;
+	font-weight: bold;
+	font-family: century gothic;
+}
+#movie-item
+{
+	padding-bottom: 20px;
+	margin-bottom: 30px;
+}
+#title-bar
+{
+	margin-top: 80px;
+	font-family: helvetica;
+	font-size: 18px;
+	font-weight: bolder;
+	color: #DF3A01;
+}
+#result-counter
+{
+	margin-top: 15px;
+	font-family: century gothic;
+	font-size: 13px;
+	font-weight: bolder;
+}
+#detail-btn
+{
+	margin-top: 15px;
+}
+#posters
+{
+	border: solid 3px #f1f1f1;
+}

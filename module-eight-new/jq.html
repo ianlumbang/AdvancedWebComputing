@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Movie Search</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+  </head>
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">MOVIE SEARCHER</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav" id="navigation-bar">
+            <li><input type="text" placeholder="Search movies here" id="txtbox"></li>
+            <li id="box-office-btn"><a href="#">Box Office Movies</a></li>
+            <li id="in-theaters-btn"><a href="#">In Theaters Movies</a></li>
+            <li id="opening-btn"><a href="#">Opening Movies</a></li>
+            <li id="upcoming-btn"><a href="#">Upcoming Movies</a></li>
+            <li id="about-us-btn"><a href="http://ianlumbang.github.io/AdvancedWebComputing/module-one/module1.html" target="_blank">About Us</a></li>
+          </ul>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+   
+    <center><div id="title-bar"></div></center>
+    <center><div id="result-counter"></div></center>
+
+    
+        <script id="tpl-movie-item" type="text/x-handlebars-template">
+              <div class = "col-md-4" id="movie-item">
+                <div class='col-md-5'>
+                  <img id = "posters" src="{{posters.profile}}" class = "img-rounded" alt="" height="150px" width="110px;">
+                </div>
+                <div class = "col-md-7">
+                    <span id = "movietitle">{{title}}</span> ({{year}})
+                    <a data-toggle="modal" href="#example" id="detail-btn" class="btn btn-default btn-sm">View more details >> </a>
+                </div>
+              </div>
+        </script>
+ 
+
+    <script id="tpl-movie-detail" type="text/x-handlebars-template">          
+    </script>
+
+    <div class="container" id="list">
+      <div class="row">
+      </div>
+    </div>
+
+    <div class="navbar navbar-fixed-bottom" id="footer">
+      <center><p>Copyright 2013. A web application module created by the students of Polytechnic University of the Philippines</p></center>
+    </div>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script src="js/app.js"></script>  
+  </body>
+</html>
